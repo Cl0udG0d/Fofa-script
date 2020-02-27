@@ -37,7 +37,7 @@
 
 基于python3的fofa爬取
 
-使用时需要将登录fofa网站的_fofapro_ars_session值放入cookie里面，保持网站的登录
+使用时需要将登录fofa网站的_fofapro_ars_session值放入cookie里面，保持爬虫的爬取，_fofapro_ars_session的值在fofa网页上登录之后的请求头里的cookie中
 
 输入的key即为想要使用fofa搜索的内容，stop_page是想要爬取的页数，在此之前会显示搜索key之后存在的页数
 
