@@ -57,10 +57,10 @@ def spider():
         print("Now write " + str(i) + " page")
         pageurl = requests.get('https://fofa.so/result?page=' + str(i) + '&qbase64=' + searchbs64, headers=header)
         tree = etree.HTML(pageurl.text)
-        urllist=tree.xpath('//div[@class="list_mod_t"]//a[@target="_blank"]/@href')
+        urllist=tree.xpath('//div[@class="re-domain"]/text()')
         for j in urllist:
-            #print(j)
-            doc.write(j+"\n")
+            print(j)
+            doc.write(j.strip()+"\n")
         if i==int(stop_page):
             break
         time.sleep(10)
