@@ -57,19 +57,19 @@ def spider():
         print("Now write " + str(i) + " page")
         pageurl = requests.get('https://fofa.so/result?page=' + str(i) + '&qbase64=' + searchbs64, headers=header)
         tree = etree.HTML(pageurl.text)
-        urllist=tree.xpath('//div[@class="re-domain"]/text()')
+        urllist=tree.xpath('//div[@class="re-domain"]//text()')
         for j in urllist:
-            print(j)
+            print(j.strip())
             doc.write(j.strip()+"\n")
         if i==int(stop_page):
             break
-        time.sleep(10)
+        time.sleep(5)
     doc.close()
     print("OK,Spider is End .")
 
 def start():
     print("Hello!My name is Spring bird.First you should make sure _fofapro_ars_session!!!")
-    print("And time sleep is 10s")
+    print("And time sleep is 5s")
 
 def main():
     logo()
