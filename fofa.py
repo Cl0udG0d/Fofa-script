@@ -3,76 +3,42 @@ from lxml import etree
 import base64
 import re
 import time
-
-cookie = ''
-
-
-def logo():
-    print('''
-                
-            
-             /$$$$$$$$ /$$$$$$  /$$$$$$$$ /$$$$$$                                   
-            | $$_____//$$__  $$| $$_____//$$__  $$                                  
-            | $$     | $$  \ $$| $$     | $$  \ $$                                  
-            | $$$$$  | $$  | $$| $$$$$  | $$$$$$$$                                  
-            | $$__/  | $$  | $$| $$__/  | $$__  $$                                  
-            | $$     | $$  | $$| $$     | $$  | $$                                  
-            | $$     |  $$$$$$/| $$     | $$  | $$                                  
-            |__/      \______/ |__/     |__/  |__/                                  
-                                                                                    
-                                                                                    
-                                                                                    
-                                /$$$$$$            /$$       /$$                    
-                               /$$__  $$          |__/      | $$                    
-                              | $$  \__/  /$$$$$$  /$$  /$$$$$$$  /$$$$$$   /$$$$$$ 
-                              |  $$$$$$  /$$__  $$| $$ /$$__  $$ /$$__  $$ /$$__  $$
-                               \____  $$| $$  \ $$| $$| $$  | $$| $$$$$$$$| $$  \__/
-                               /$$  \ $$| $$  | $$| $$| $$  | $$| $$_____/| $$      
-                              |  $$$$$$/| $$$$$$$/| $$|  $$$$$$$|  $$$$$$$| $$      
-                               \______/ | $$____/ |__/ \_______/ \_______/|__/      
-                                        | $$                                        
-                                        | $$                                        
-                                        |__/                                        
-                                
-                                                                                version:1.0
-    ''')
-
+import base
+import config
+from urllib.parse import quote,unquote
 
 def spider():
-    header = {
-        "Connection": "keep-alive",
-        "Cookie": "_fofapro_ars_session=" + cookie,
-    }
-    search = input('please input your key: \n')
-    searchbs64 = (str(base64.b64encode(search.encode('utf-8')), 'utf-8'))
-    print("spider website is :https://fofa.so/result?&qbase64=" + searchbs64)
-    html = requests.get(url="https://fofa.so/result?&qbase64=" + searchbs64, headers=header).text
+    searchbs64 = quote(str(base64.b64encode(config.SearchKEY.encode()), encoding='utf-8'))
+
+    # searchbs64 = (str(base64.b64encode(config.SearchKEY.encode('utf-8')), 'utf-8'))
+    print("爬取页面为:https://fofa.so/result?&qbase64=" + searchbs64)
+    html = requests.get(url="https://fofa.so/result?&qbase64=" + searchbs64, headers=config.header).text
     pagenum = re.findall('>(\d*)</a> <a class="next_page" rel="next"', html)
-    print("have page: "+pagenum[0])
-    stop_page=input("please input stop page: \n")
-    #print(stop_page)
+    print("该关键字存在页码: "+pagenum[0])
+    config.StopPage=input("请输入终止页码: \n")
     doc = open("hello_world.txt", "a+")
     for i in range(1,int(pagenum[0])):
         print("Now write " + str(i) + " page")
-        pageurl = requests.get('https://fofa.so/result?page=' + str(i) + '&qbase64=' + searchbs64, headers=header)
+        pageurl = requests.get('https://fofa.so/result?page=' + str(i) + '&qbase64=' + searchbs64, headers=config.header)
         tree = etree.HTML(pageurl.text)
         urllist=tree.xpath('//div[@class="re-domain"]//text()')
+        urllist = [value.strip('\n').strip(' ').strip('\n') for value in urllist if len(value.strip('\n').strip(' ').strip('\n')) != 0]
+        print(urllist)
         for j in urllist:
-            print(j.strip())
-            doc.write(j.strip()+"\n")
-        if i==int(stop_page):
+
+            print(j)
+            doc.write(j+"\n")
+        if i==int(config.StopPage):
             break
-        time.sleep(5)
+        time.sleep(config.TimeSleep)
     doc.close()
     print("OK,Spider is End .")
 
-def start():
-    print("Hello!My name is Spring bird.First you should make sure _fofapro_ars_session!!!")
-    print("And time sleep is 5s")
 
 def main():
-    logo()
-    start()
+    base.logo()
+    base.checkSession()
+    base.init()
     spider()
 
 if __name__ == '__main__':
