@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 import requests
 from lxml import etree
 import base64
@@ -59,11 +58,11 @@ def spider():
         tree = etree.HTML(pageurl.text)
         urllist=tree.xpath('//div[@class="re-domain"]/text()')
         for j in urllist:
-            print(j)
+            print(j.strip())
             doc.write(j.strip()+"\n")
         if i==int(stop_page):
             break
-        time.sleep(10)
+        time.sleep(5)
     doc.close()
     print("OK,Spider is End .")
 
