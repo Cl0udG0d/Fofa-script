@@ -15,9 +15,10 @@ def spider():
     html = requests.get(url="https://fofa.so/result?&qbase64=" + searchbs64, headers=config.header).text
     pagenum = re.findall('>(\d*)</a> <a class="next_page" rel="next"', html)
     print("该关键字存在页码: "+pagenum[0])
+    config.StartPage=input("请输入开始页码:\n")
     config.StopPage=input("请输入终止页码: \n")
     doc = open("hello_world.txt", "a+")
-    for i in range(1,int(pagenum[0])):
+    for i in range(int(config.StartPage),int(pagenum[0])):
         print("Now write " + str(i) + " page")
         pageurl = requests.get('https://fofa.so/result?page=' + str(i) + '&qbase64=' + searchbs64, headers=config.header)
         tree = etree.HTML(pageurl.text)
