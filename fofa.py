@@ -12,7 +12,7 @@ def spider():
 
     # searchbs64 = (str(base64.b64encode(config.SearchKEY.encode('utf-8')), 'utf-8'))
     print("爬取页面为:https://fofa.so/result?&qbase64=" + searchbs64)
-    html = requests.get(url="https://fofa.so/result?&qbase64=" + searchbs64, headers=config.header).text
+    html = requests.get(url="https://fofa.so/result?&qbase64=" + searchbs64, headers=config.headers).text
     tree = etree.HTML(html)
     pagenum=tree.xpath('//li[@class="number"]/text()')[5]
     # pagenum = re.findall('>(\d*)</a> <a class="next_page" rel="next"', html)
@@ -22,10 +22,12 @@ def spider():
     doc = open("hello_world.txt", "a+")
     for i in range(int(config.StartPage),int(pagenum)):
         print("Now write " + str(i) + " page")
-        pageurl = requests.get('https://fofa.so/result?page=' + str(i) + '&qbase64=' + searchbs64, headers=config.header)
-        tree = etree.HTML(pageurl.text)
-        urllist=tree.xpath('//span[@class="aSpan"]//@href')
-        urllist = [value.strip('\n').strip(' ').strip('\n') for value in urllist if len(value.strip('\n').strip(' ').strip('\n')) != 0]
+        rep = requests.get('https://api.fofa.so/v1/search?qbase64=' + searchbs64+"&full=false&pn="+str(i)+"&ps=10", headers=config.headers)
+        # tree = etree.HTML(pageurl.text)
+        # urllist=tree.xpath('//span[@class="aSpan"]//@href')
+        # urllist = [value.strip('\n').strip(' ').strip('\n') for value in urllist if len(value.strip('\n').strip(' ').strip('\n')) != 0]
+        pattern = re.compile('"link":"(.*?)",')
+        urllist = re.findall(pattern, rep.text)
         print(urllist)
         for j in urllist:
             print(j)

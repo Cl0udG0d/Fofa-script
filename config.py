@@ -1,11 +1,11 @@
 
 
 
-COOKIE = ''
+Authorization = ""
 
-header = {
+headers = {
         "Connection": "keep-alive",
-        "Cookie": COOKIE
+        "Authorization": Authorization
     }
 
 SearchKEY=""

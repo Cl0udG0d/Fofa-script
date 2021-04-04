@@ -31,10 +31,10 @@ def logo():
     ''')
 
 def checkSession():
-    if config.COOKIE=="":
+    if config.Authorization=="":
         print("请配置config文件")
         exit(0)
-    print("检测cookie成功")
+    print("检测Authorization成功")
     return
 
 def init():
