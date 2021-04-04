@@ -55,4 +55,6 @@ https://www.cnblogs.com/Cl0ud/p/14324445.html
 
 ### 更新日志
 
-+ 2021-4-4 对最新版`fofa`更新做出对应更新
++ 2021-4-4 对最新版`fofa`更新做出对应更新，注意：`config.py`文件中不再是以`cookie`来进行保证登录，而是使用`Authorization`，`Authorization`的值可以登录后`F12`在`https://api.fofa.so/v1/search`网址请求头中看到
+
+  ![](https://github.com/Cl0udG0d/Fofa-script/blob/master/images/1.png)
