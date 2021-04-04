@@ -51,3 +51,8 @@ https://www.cnblogs.com/Cl0ud/p/14324445.html
                                 
                                                                                 version:1.0
 
+
+
+### 更新日志
+
++ 2021-4-4 对最新版`fofa`更新做出对应更新

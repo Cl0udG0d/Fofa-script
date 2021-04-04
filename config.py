@@ -5,7 +5,7 @@ COOKIE = ''
 
 header = {
         "Connection": "keep-alive",
-        "Cookie": "_fofapro_ars_session=" + COOKIE,
+        "Cookie": COOKIE
     }
 
 SearchKEY=""
