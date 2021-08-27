@@ -14,7 +14,7 @@ def spider():
     print("爬取页面为:https://fofa.so/result?&qbase64=" + searchbs64)
     html = requests.get(url="https://fofa.so/result?&qbase64=" + searchbs64, headers=config.headers).text
     tree = etree.HTML(html)
-    pagenum=tree.xpath('//li[@class="number"]/text()')[5]
+    pagenum=tree.xpath('//li[@class="number"]/text()')[-1]
     # pagenum = re.findall('>(\d*)</a> <a class="next_page" rel="next"', html)
     print("该关键字存在页码: "+pagenum)
     config.StartPage=input("请输入开始页码:\n")
