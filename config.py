@@ -1,11 +1,11 @@
 
 
 
-Authorization = ""
+cookie=""
 
 headers = {
         "Connection": "keep-alive",
-        "Authorization": Authorization
+        "cookie": cookie
     }
 
 SearchKEY=""

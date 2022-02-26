@@ -62,3 +62,4 @@ https://www.cnblogs.com/Cl0ud/p/14324445.html
 + 2021-8-28 对 [issue5](https://github.com/Cl0udG0d/Fofa-script/issues/5) 提出的问题进行修改
 
   感谢 [yq1ng](https://github.com/yq1ng)  指出问题与解决方案
++ 2022-2-26 由于众所周知的原因，原fofa.so网址已无法查询，更改爬取网站为fofa.info，配置config文件中的cookie进行使用即可（cookie的位置打开F12查看请求头即可看到）
