@@ -63,3 +63,12 @@ https://www.cnblogs.com/Cl0ud/p/14324445.html
 
   感谢 [yq1ng](https://github.com/yq1ng)  指出问题与解决方案
 + 2022-2-26 由于众所周知的原因，原fofa.so网址已无法查询，更改爬取网站为fofa.info，配置config文件中的cookie进行使用即可（cookie的位置打开F12查看请求头即可看到）
+
+### END 
+ 
+建了一个微信的安全交流群，欢迎添加我微信备注`进群`，一起来聊天吹水哇，以及一个会发布安全相关内容的公众号，欢迎关注 :)
+ 
+<div>
+    <img  alt="GIF" src="https://springbird.oss-cn-beijing.aliyuncs.com/img/mmqrcode1632325540724.png"  width="280px" />
+    <img  alt="GIF" src="https://springbird.oss-cn-beijing.aliyuncs.com/img/qrcode_for_gh_cead8e1080d6_344.jpg"  width="280px" />
+</div>
