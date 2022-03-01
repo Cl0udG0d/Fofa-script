@@ -1,10 +1,9 @@
 import requests
 from lxml import etree
 import base64
-import re
 import time
 import config
-from urllib.parse import quote,unquote
+from urllib.parse import quote
 
 
 def logo():

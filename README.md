@@ -57,12 +57,14 @@ https://www.cnblogs.com/Cl0ud/p/14324445.html
 
 + 2021-4-4 对最新版`fofa`更新做出对应更新，注意：`config.py`文件中不再是以`cookie`来进行保证登录，而是使用`Authorization`，`Authorization`的值可以登录后`F12`在`https://api.fofa.so/v1/search`网址请求头中看到
 
-  ![](https://github.com/Cl0udG0d/Fofa-script/blob/master/images/1.png)
   
 + 2021-8-28 对 [issue5](https://github.com/Cl0udG0d/Fofa-script/issues/5) 提出的问题进行修改
 
   感谢 [yq1ng](https://github.com/yq1ng)  指出问题与解决方案
 + 2022-2-26 由于众所周知的原因，原fofa.so网址已无法查询，更改爬取网站为fofa.info，配置config文件中的cookie进行使用即可（cookie的位置打开F12查看请求头即可看到）
+
+`cookie`的位置如下
+  ![](https://github.com/Cl0udG0d/Fofa-script/blob/master/images/2.png)
 
 ### END 
  
