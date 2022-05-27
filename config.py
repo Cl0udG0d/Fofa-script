@@ -5,7 +5,7 @@ cookie=""
 
 headers = {
         "Connection": "keep-alive",
-        "cookie": cookie
+        "cookie": cookie.encode("utf-8").decode("latin1")
     }
 
 SearchKEY=""
