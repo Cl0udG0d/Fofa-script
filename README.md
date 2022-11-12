@@ -66,6 +66,7 @@ https://www.cnblogs.com/Cl0ud/p/14324445.html
 `cookie`的位置如下
   ![](https://github.com/Cl0udG0d/Fofa-script/blob/master/images/2.png)
 
++ 2022-11-12 更新爬取规则
 ### END 
  
 建了一个微信的安全交流群，欢迎添加我微信备注`进群`，一起来聊天吹水哇，以及一个会发布安全相关内容的公众号，欢迎关注 :)

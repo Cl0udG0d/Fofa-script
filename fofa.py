@@ -78,9 +78,10 @@ def spider():
     doc = open("hello_world.txt", "a+")
     for i in range(int(config.StartPage),int(pagenum)):
         print("Now write " + str(i) + " page")
-        rep = requests.get('https://fofa.info/result?qbase64=' + searchbs64+"&page="+str(i)+"&page_size=20", headers=config.headers)
+        rep = requests.get('https://fofa.info/result?qbase64=' + searchbs64+"&page="+str(i)+"&page_size=10", headers=config.headers)
+
         tree = etree.HTML(rep.text)
-        urllist=tree.xpath('//span[@class="aSpan"]/a/@href')
+        urllist=tree.xpath('//span[@class="hsxa-host"]/a/@href')
         # urllist = [value.strip('\n').strip(' ').strip('\n') for value in urllist if len(value.strip('\n').strip(' ').strip('\n')) != 0]
         # pattern = re.compile('"link":"(.*?)",')
         # urllist = re.findall(pattern, rep.text)
